@@ -61,7 +61,7 @@ const Product = () => {
           </div>
           <p className="mt-5 text-3xl font-medium">
             {currency}
-            {productData.price+900}
+            {Number(productData.price)+900}
           </p>
           <p className="mt-5 text-gray-500 md:4/5">{productData.description}</p>
           <div className="flex flex-col gap-4 my-8">

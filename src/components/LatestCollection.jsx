@@ -24,7 +24,7 @@ const LatestCollection = () => {
             id={item._id}
             image={item.image}
             name={item.name}
-            price={item.price}
+            price={Number(item.price)+900}
           />
         ))}
       </div>

@@ -61,17 +61,27 @@ const Product = () => {
           </div>
           <p className="mt-5 text-3xl font-medium">
             {currency}
-            {Number(productData.price)+900}
+            {Number(productData.price) + 900}
           </p>
           <p className="mt-5 text-gray-500 md:4/5">{productData.description}</p>
           <div className="flex flex-col gap-4 my-8">
-            <p>Select Size</p>
+            <p className="select-size font-medium">
+              {size ? `Size Selected: ${size}` : "Size Selected: None"}
+            </p>
             <div className="flex gap-3">
-              {
-                productData.sizes.map((item, index)=>(
-                  <button onClick={()=>{setSize(item)}} className={`border py-2 px-4 bg-gray-100 ${item === size ? ' border-orange-500 ':''}`} key={index}>{item}</button>
-                ))
-              }
+              {productData.sizes.map((item, index) => (
+                <button
+                  onClick={() => setSize(item)}
+                  className={`border py-2 px-4 ${
+                    item === size
+                      ? "bg-blue-500 text-white border-blue-500"
+                      : "bg-gray-100 text-black border-gray-300"
+                  } hover:bg-blue-400 hover:text-white transition-all`}
+                  key={index}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import p_img8 from "../assets/p_img8.png";
+import p_img37 from "../assets/p_img37.png";
 
 const Hero = () => {
   return (
@@ -7,7 +9,7 @@ const Hero = () => {
       {/* left image */}
       <img
         className="w-full sm:w-1/4 border border-gray-300"
-        src="/src/assets/p_img8.png"
+        src={p_img8}
         alt=""
       />
       {/* Middle content */}
@@ -30,7 +32,7 @@ const Hero = () => {
 
       <img
         className="w-full sm:w-1/4 border border-gray-300"
-        src="/src/assets/p_img37.png"
+        src={p_img37}
         alt=""
       />
     </div>

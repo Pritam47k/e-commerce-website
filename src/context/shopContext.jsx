@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { products } from "../assets/assets";
 import { useState, useEffect} from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const ShopContext = createContext();
 
@@ -10,7 +11,8 @@ const ShopContextProvider = (props) => {
   const delivery_fee = 10;
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  const[cartItem, setCartItem] = useState({})
+  const[cartItems, setCartItems] = useState({})
+  const navigate = useNavigate();
 
   const addToCart = async (itemId,size)=>{
 
@@ -19,7 +21,7 @@ const ShopContextProvider = (props) => {
       return;
     }
 
-    let cartData = structuredClone(cartItem)
+    let cartData = structuredClone(cartItems)
 
     if(cartData[itemId]){
       if(cartData[itemId][size]){
@@ -31,21 +33,44 @@ const ShopContextProvider = (props) => {
       cartData[itemId] = {}
       cartData[itemId][size] = 1;
     }
-    setCartItem(cartData);
+    setCartItems(cartData);
   }
 
   const getCartCount = () =>{
     let totalCount = 0;
-    for(const items in cartItem){
-      for(const item in cartItem[items]){
+    for(const items in cartItems){
+      for(const item in cartItems[items]){
         try{
-          if(cartItem[items][item]>0){
-            totalCount += cartItem[items][item];
+          if(cartItems[items][item]>0){
+            totalCount += cartItems[items][item];
           }
         }catch(e){}
       }
     }
     return totalCount;
+  }
+
+  const updateQuantity = async(itemid,size,quantity)=>{
+    let cartData = structuredClone(cartItems)
+
+    cartData[itemid][size] = quantity;
+
+    setCartItems(cartData);
+  }
+
+  const getCartAmount = ()=>{
+    let totalAmount = 0;
+    for(const items in cartItems){
+      let itemInfo = products.find((product)=> product._id === items);
+      for(const item in cartItems[items]){
+        try{
+          if(cartItems[items][item]>0){
+            totalAmount += (Number(itemInfo.price)+900) * cartItems[items][item];
+          }
+        }catch(e){}
+      }
+    }
+    return totalAmount;
   }
 
   const value = {
@@ -57,6 +82,8 @@ const ShopContextProvider = (props) => {
     showSearch,
     setShowSearch,
     addToCart,getCartCount,
+    cartItems,updateQuantity,
+    getCartAmount,navigate
   };
 
   return (

@@ -8,7 +8,7 @@ const Footer = () => {
       <div>
         <img src={assets.logo} className='mb-5 w-32' alt="" />
         <p className='w-full md:w-2/3 text-gray-600'>
-          Lorem Ipsum is simply ..
+          Smart. Simple. Seamless Shopping.
         </p>
       </div>
       <div>

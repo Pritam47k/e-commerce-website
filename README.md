@@ -15,7 +15,6 @@ A fully responsive and modern E-Commerce web application built using **React**, 
 
 - **Frontend**: React, Vite, Tailwind CSS
 - **Routing**: React Router
-- **HTTP Client**: Axios
 - **State Management**: React Context API
 - **Deployment**: Vercel
 

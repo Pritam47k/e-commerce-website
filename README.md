@@ -5,6 +5,12 @@ This project showcases a clean design, fast performance, and a seamless shopping
 
 ---
 
+## 🌐 Live Demo
+
+🔗 [View Live Site](https://ecommerce-stylora.netlify.app/)
+
+---
+
 ## 🔧 Tech Stack
 
 - ⚛️ **React** – Component-based UI
